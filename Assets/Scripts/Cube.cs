@@ -3,22 +3,25 @@ using System.Collections;
 
 public class Cube : MonoBehaviour {
 
-	public Color hoverColor = new Color (1, 0, 0);
-	public Color defaultColor = new Color (1, 1, 1);
+	[SerializeField] private Color m_hoverColor = new Color (1, 0, 0);
+	[SerializeField] private Color m_defaultColor = new Color (1, 1, 1);
+	private Renderer m_renderer;
 
-	public bool isGazing = false;
+	private void Start(){
+		m_renderer = GetComponent<Renderer> ();
+		m_renderer = m_defaultColor;
+	}
+
 
 	void OnTriggerEnter(Collider other){
 		if (other.GetComponent<Reticle> ()) {
-			GetComponent<Renderer> ().material.color = hoverColor;
-			isGazing = true;
+			m_renderer.material.color = m_hoverColor;
 		}
 	}
 		
 	void OnTriggerExit(Collider other){
 		if (other.GetComponent<Reticle> ()) {
-			GetComponent<Renderer> ().material.color = defaultColor;
-			isGazing = false;
+			m_renderer.material.color = m_defaultColor;
 		}
 	}
 }

@@ -9,7 +9,7 @@ public class CameraControlScript : MonoBehaviour {
 	private float m_mouseHeading = 0f;
 	private float m_mousePitch = 0f;
 
-	void Update()
+	private void Update()
 	{
 		#if UNITY_EDITOR
 		if (!(Input.GetMouseButton(1)))

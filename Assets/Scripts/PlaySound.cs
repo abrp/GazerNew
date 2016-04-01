@@ -3,24 +3,27 @@ using System.Collections;
 
 public class PlaySound : MonoBehaviour {
 
-	public bool isGazing = false;
+	private AudioSource m_audioSouce;
+	private Animator m_animator;
+
+	private void Start(){
+		m_audioSouce = GetComponent<AudioSource> ();
+	}
 
 	void OnTriggerEnter(Collider other){
 		if (other.GetComponent<Reticle> ()) {
-			isGazing = true;
-			GetComponent<Animator> ().SetBool ("IsOver", true);
+			m_animator.SetBool ("IsOver", true);
 		}
 	}
 
 	void OnTriggerExit(Collider other){
 		if (other.GetComponent<Reticle> ()) {
-			GetComponent<Animator> ().SetBool ("IsOver", false);
-			isGazing = false;
+			m_animator.SetBool ("IsOver", false);
 		}
 	}
 
 
 	public void Play(){
-		GetComponent<AudioSource> ().Play ();
+		m_audioSouce.Play ();
 	}
 }
