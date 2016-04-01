@@ -8,6 +8,7 @@ public class PlaySound : MonoBehaviour {
 
 	private void Start(){
 		m_audioSouce = GetComponent<AudioSource> ();
+		m_animator = GetComponent<Animator> ();
 	}
 
 	void OnTriggerEnter(Collider other){

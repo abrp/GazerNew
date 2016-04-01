@@ -9,7 +9,7 @@ public class Cube : MonoBehaviour {
 
 	private void Start(){
 		m_renderer = GetComponent<Renderer> ();
-		m_renderer = m_defaultColor;
+		m_renderer.material.color = m_defaultColor;
 	}
 
 
